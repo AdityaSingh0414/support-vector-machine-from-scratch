@@ -120,8 +120,34 @@ def apply_update(params, grads, learning_rate):
         'b': new_b
     }
 
-# Step 9 - train_svm (not yet solved)
-# TODO: implement
+# Step 9 - train_svm
+import numpy as np
+
+def train_svm(x, y, learning_rate, reg_lambda, n_epochs):
+    """Fit a linear SVM using full-batch gradient descent."""
+
+    # Step 1: Initialize parameters
+    params = initialize_parameters(x.shape[1])
+
+    # Step 2: Training loop
+    for _ in range(n_epochs):
+
+        # Compute gradients for the entire dataset
+        grads = compute_gradients(
+            x,
+            y,
+            params,
+            reg_lambda
+        )
+
+        # Update weights and bias
+        params = apply_update(
+            params,
+            grads,
+            learning_rate
+        )
+
+    return params
 
 # Step 10 - predict_labels (not yet solved)
 # TODO: implement
